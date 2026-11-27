@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Video Editor & Thumbnail Designer</title>
+  <meta name="description" content="Minimal, high-retention video editing and high-CTR YouTube thumbnail design portfolio.">
+  <!-- Google Fonts: Syne & Plus Jakarta Sans for modern minimal aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <!-- Background Glow & Grid Canvas -->
+  <div class="ambient-glow top-left"></div>
+  <div class="ambient-glow bottom-right"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Hemant<span class="dot">.</span>edit</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#showreel">Showreel</a>
+        <a href="#videos">Videos</a>
+        <a href="#thumbnails">Thumbnails</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="btn-nav">Let's Talk</a>
+      </nav>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-content">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span>Available for Freelance & Long-term Contracts</span>
+        </div>
+
+        <h1 class="hero-title">
+          Crafting High-Retention <br>
+          <span class="gradient-text">Videos & High-CTR</span> Thumbnails.
+        </h1>
+
+        <p class="hero-subtitle">
+          I help creators, brands, and businesses turn raw footage into cinematic, fast-paced stories and design eye-catching Photoshop thumbnails that stop the scroll.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#showreel" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            Watch 2026 Showreel
+          </a>
+          <a href="#thumbnails" class="btn btn-secondary">
+            Explore Thumbnails
+          </a>
+        </div>
+
+        <!-- Metrics Bar -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <span class="metric-num">25M+</span>
+            <span class="metric-label">Views Generated</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-num">11.8%</span>
+            <span class="metric-label">Avg. Thumbnail CTR</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-num">120+</span>
+            <span class="metric-label">Videos Delivered</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-num">48h</span>
+            <span class="metric-label">Typical Turnaround</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Showreel Section -->
+    <section id="showreel" class="section showreel-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="eyebrow">FEATURED SHOWREEL</span>
+          <h2 class="section-title">The Reel</h2>
+          <p class="section-desc">Pacing, dynamic sound design, motion graphics, and color grading in action.</p>
+        </div>
+
+        <div class="showreel-wrapper">
+          <div class="showreel-card" onclick="openVideoModal('https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1')">
+            <div class="showreel-thumbnail" style="background-image: linear-gradient(180deg, rgba(13,15,20,0.1) 0%, rgba(13,15,20,0.85) 100%), url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=80');">
+              <div class="play-btn-circle">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <div class="showreel-meta">
+                <span class="badge">Full Showreel</span>
+                <h3>2026 Editing & Motion Showcase</h3>
+                <p>Premiere Pro • After Effects • DaVinci Resolve • Custom Sound Mixing</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Portfolio Section -->
+    <section id="videos" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">VIDEO PROJECTS</span>
+            <h2 class="section-title">Recent Editing Work</h2>
+          </div>
+          
+          <!-- Category Filter Tabs -->
+          <div class="filter-tabs" id="videoFilters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="youtube">YouTube Longform</button>
+            <button class="filter-btn" data-filter="shorts">Shorts & Reels</button>
+            <button class="filter-btn" data-filter="commercial">Commercial / Ads</button>
+          </div>
+        </div>
+
+        <div class="projects-grid" id="videoGrid">
+          <!-- Video Card 1 -->
+          <div class="project-card" data-category="youtube" onclick="openVideoModal('https://www.youtube-nocookie.com/embed/ScMzIvxBSi4?autoplay=1')">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Tech Documentary Edit" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-mini-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+              <span class="duration-tag">14:22</span>
+            </div>
+            <div class="card-content">
+              <div class="card-tags">
+                <span class="tag">YouTube Longform</span>
+                <span class="tag">Documentary</span>
+              </div>
+              <h3 class="card-title">The Evolution of Silicon: Future of Computing</h3>
+              <p class="card-desc">Fast-paced tech documentary style with kinetic typography, 3D camera mapping, and immersive soundscapes.</p>
+              <div class="card-footer">
+                <span class="client-name">TechVision Media</span>
+                <span class="card-action">Watch Video →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Card 2 -->
+          <div class="project-card" data-category="shorts" onclick="openVideoModal('https://www.youtube-nocookie.com/embed/ScMzIvxBSi4?autoplay=1')">
+            <div class="card-media portrait">
+              <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="Viral Hook Reel" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-mini-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+              <span class="duration-tag">00:45</span>
+            </div>
+            <div class="card-content">
+              <div class="card-tags">
+                <span class="tag">Shorts & Reels</span>
+                <span class="tag">Retention Edit</span>
+              </div>
+              <h3 class="card-title">Music Production Breakdown in 45 Seconds</h3>
+              <p class="card-desc">Dynamic captions, beat-matched jump cuts, and high-energy zooms calibrated for TikTok & Shorts retention.</p>
+              <div class="card-footer">
+                <span class="client-name">AudioCraft Studio</span>
+                <span class="card-action">Watch Reel →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Card 3 -->
+          <div class="project-card" data-category="commercial" onclick="openVideoModal('https://www.youtube-nocookie.com/embed/ScMzIvxBSi4?autoplay=1')">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=800&q=80" alt="Brand Launch Trailer" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-mini-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+              <span class="duration-tag">01:30</span>
+            </div>
+            <div class="card-content">
+              <div class="card-tags">
+                <span class="tag">Commercial</span>
+                <span class="tag">Color Grade</span>
+              </div>
+              <h3 class="card-title">Aura Sound: Wireless Headphone Launch</h3>
+              <p class="card-desc">Sleek, luxury commercial aesthetic with DaVinci Resolve color grading and heavy sound design.</p>
+              <div class="card-footer">
+                <span class="client-name">Aura Audio</span>
+                <span class="card-action">Watch Ad →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Card 4 -->
+          <div class="project-card" data-category="youtube" onclick="openVideoModal('https://www.youtube-nocookie.com/embed/ScMzIvxBSi4?autoplay=1')">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" alt="Travel Cinematic Video" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-mini-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+              <span class="duration-tag">09:15</span>
+            </div>
+            <div class="card-content">
+              <div class="card-tags">
+                <span class="tag">YouTube Longform</span>
+                <span class="tag">Storytelling</span>
+              </div>
+              <h3 class="card-title">Solitude: 48 Hours in the Icelandic Highlands</h3>
+              <p class="card-desc">Cinematic pacing with ambient audio layers, map animations, and subtle speed-ramps.</p>
+              <div class="card-footer">
+                <span class="client-name">Wanderer Collective</span>
+                <span class="card-action">Watch Video →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photoshop Thumbnails Section -->
+    <section id="thumbnails" class="section thumbnails-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">GRAPHIC DESIGN & PHOTOSHOP</span>
+            <h2 class="section-title">Thumbnails That Convert</h2>
+            <p class="section-desc">Clean composition, high contrast, facial color correction, custom lighting, and zero clutter.</p>
+          </div>
+
+          <div class="filter-tabs" id="thumbFilters">
+            <button class="filter-btn active" data-filter="all">All Thumbnails</button>
+            <button class="filter-btn" data-filter="tech">Tech / Gaming</button>
+            <button class="filter-btn" data-filter="lifestyle">Lifestyle / Vlogs</button>
+            <button class="filter-btn" data-filter="finance">Business / Finance</button>
+          </div>
+        </div>
+
+        <div class="thumbnails-grid" id="thumbGrid">
+          <!-- Thumbnail Item 1 -->
+          <div class="thumb-card" data-category="tech" onclick="openLightbox('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1600&q=80', 'Next-Gen Setup Tour | 14.2% CTR', 'Tech / Gaming • Photoshop CC')">
+            <div class="thumb-frame">
+              <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Cyberpunk Setup Thumbnail" loading="lazy">
+              <div class="thumb-overlay">
+                <span class="zoom-icon">🔍 Click to Expand</span>
+              </div>
+              <div class="ctr-badge">CTR: 14.2%</div>
+            </div>
+            <div class="thumb-info">
+              <h4>Next-Gen Setup Tour</h4>
+              <p>Subject separation, rim lighting, neon color grading</p>
+            </div>
+          </div>
+
+          <!-- Thumbnail Item 2 -->
+          <div class="thumb-card" data-category="finance" onclick="openLightbox('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1600&q=80', 'The Great Market Shift | 11.5% CTR', 'Business / Finance • Photoshop CC')">
+            <div class="thumb-frame">
+              <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80" alt="Market Analysis Thumbnail" loading="lazy">
+              <div class="thumb-overlay">
+                <span class="zoom-icon">🔍 Click to Expand</span>
+              </div>
+              <div class="ctr-badge">CTR: 11.5%</div>
+            </div>
+            <div class="thumb-info">
+              <h4>The Great Market Shift</h4>
+              <p>Bold focal text, chart integration, high-contrast palette</p>
+            </div>
+          </div>
+
+          <!-- Thumbnail Item 3 -->
+          <div class="thumb-card" data-category="lifestyle" onclick="openLightbox('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80', 'I Traveled to the Edge of the World | 13.9% CTR', 'Lifestyle / Vlog • Photoshop CC')">
+            <div class="thumb-frame">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Travel Vlog Thumbnail" loading="lazy">
+              <div class="thumb-overlay">
+                <span class="zoom-icon">🔍 Click to Expand</span>
+              </div>
+              <div class="ctr-badge">CTR: 13.9%</div>
+            </div>
+            <div class="thumb-info">
+              <h4>I Traveled to the Edge of the World</h4>
+              <p>Sky replacement, atmospheric haze, color balance</p>
+            </div>
+          </div>
+
+          <!-- Thumbnail Item 4 -->
+          <div class="thumb-card" data-category="tech" onclick="openLightbox('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=1600&q=80', 'Building the Ultimate M3 Studio | 12.1% CTR', 'Tech / Hardware • Photoshop CC')">
+            <div class="thumb-frame">
+              <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=800&q=80" alt="Studio Setup Thumbnail" loading="lazy">
+              <div class="thumb-overlay">
+                <span class="zoom-icon">🔍 Click to Expand</span>
+              </div>
+              <div class="ctr-badge">CTR: 12.1%</div>
+            </div>
+            <div class="thumb-info">
+              <h4>Building the Ultimate M3 Studio</h4>
+              <p>Product cutouts, specular reflections, 3D depth blur</p>
+            </div>
+          </div>
+
+          <!-- Thumbnail Item 5 -->
+          <div class="thumb-card" data-category="finance" onclick="openLightbox('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1600&q=80', 'How I Scaled My Agency to $50k/Mo | 10.8% CTR', 'Business / Growth • Photoshop CC')">
+            <div class="thumb-frame">
+              <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80" alt="Agency Growth Thumbnail" loading="lazy">
+              <div class="thumb-overlay">
+                <span class="zoom-icon">🔍 Click to Expand</span>
+              </div>
+              <div class="ctr-badge">CTR: 10.8%</div>
+            </div>
+            <div class="thumb-info">
+              <h4>How I Scaled My Agency</h4>
+              <p>Expressive cutouts, clean visual hierarchy, zero clutter</p>
+            </div>
+          </div>
+
+          <!-- Thumbnail Item 6 -->
+          <div class="thumb-card" data-category="lifestyle" onclick="openLightbox('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1600&q=80', 'Day In The Life of a Solo Founder | 12.7% CTR', 'Lifestyle / Vlog • Photoshop CC')">
+            <div class="thumb-frame">
+              <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80" alt="Founder Lifestyle Thumbnail" loading="lazy">
+              <div class="thumb-overlay">
+                <span class="zoom-icon">🔍 Click to Expand</span>
+              </div>
+              <div class="ctr-badge">CTR: 12.7%</div>
+            </div>
+            <div class="thumb-info">
+              <h4>Day In The Life of a Solo Founder</h4>
+              <p>Split composition, expressive portrait, warm film tones</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills, Tools & Process Section -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-bio">
+            <span class="eyebrow">ABOUT ME</span>
+            <h2 class="section-title">Editing with intention, designing with clarity.</h2>
+            <p>
+              I'm Hemant, a specialized video editor and graphic designer with over 4 years of experience. I specialize in fast-paced storytelling that holds viewer attention from the first 3 seconds to the end screen.
+            </p>
+            <p>
+              Every video edit is treated as a complete package: from cutting dead air and narrative flow to sound design, grading, and the final high-impact YouTube thumbnail that gets clicked.
+            </p>
+
+            <div class="software-stack">
+              <h4>My Production Toolkit</h4>
+              <div class="tools-grid">
+                <div class="tool-item">
+                  <span class="tool-icon">Ps</span>
+                  <span class="tool-name">Adobe Photoshop</span>
+                </div>
+                <div class="tool-item">
+                  <span class="tool-icon">Pr</span>
+                  <span class="tool-name">Adobe Premiere Pro</span>
+                </div>
+                <div class="tool-item">
+                  <span class="tool-icon">Ae</span>
+                  <span class="tool-name">After Effects</span>
+                </div>
+                <div class="tool-item">
+                  <span class="tool-icon">Dv</span>
+                  <span class="tool-name">DaVinci Resolve</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="workflow-card">
+            <h3>How We Work Together</h3>
+            <ul class="workflow-steps">
+              <li>
+                <div class="step-num">01</div>
+                <div>
+                  <strong>Asset Transfer & Direction</strong>
+                  <p>Send raw footage, scripts, or rough ideas. We align on pacing, style references, and thumbnail concepts.</p>
+                </div>
+              </li>
+              <li>
+                <div class="step-num">02</div>
+                <div>
+                  <strong>Assembly & Sound Polish</strong>
+                  <p>Rough cut, retention trimming, sound effects, motion graphics, and color balance with fast iteration drafts.</p>
+                </div>
+              </li>
+              <li>
+                <div class="step-num">03</div>
+                <div>
+                  <strong>Thumbnails & Delivery</strong>
+                  <p>Photoshop thumbnail variants tested for CTR and final 4K/1080p exports ready to upload.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Booking Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="contact-box">
+          <div class="contact-left">
+            <span class="eyebrow">START A PROJECT</span>
+            <h2 class="section-title">Ready to take your content to the next level?</h2>
+            <p>Whether you need a single YouTube video edited, a monthly package of Shorts/Reels, or high-CTR thumbnail designs, let's talk.</p>
+            
+            <div class="contact-details">
+              <div class="contact-row">
+                <span class="label">Email:</span>
+                <a href="mailto:hemant@example.com" class="val">hemant@example.com</a>
+              </div>
+              <div class="contact-row">
+                <span class="label">Discord:</span>
+                <span class="val">hemant#0001</span>
+              </div>
+              <div class="contact-row">
+                <span class="label">Turnaround:</span>
+                <span class="val">24 - 48 Hours</span>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <a href="#" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+              <a href="#" target="_blank" rel="noopener" aria-label="Twitter / X">Twitter/X</a>
+              <a href="#" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+              <a href="#" target="_blank" rel="noopener" aria-label="Behance">Behance</a>
+            </div>
+          </div>
+
+          <div class="contact-right">
+            <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleFormSubmit(event)">
+              <!-- Web3Forms Access Key & Config (Hidden) -->
+              <input type="hidden" name="access_key" id="web3formsKey" value="7285b306-de49-40c3-91f5-07f96b341bb7">
+              <input type="hidden" name="subject" value="New Video Editing Client Inquiry!">
+              <input type="hidden" name="from_name" value="Portfolio Website">
+
+              <div class="form-group">
+                <label for="name">Your Name / Channel</label>
+                <input type="text" name="name" id="name" required placeholder="e.g. Alex Tech">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" name="email" id="email" required placeholder="alex@creator.com">
+              </div>
+
+              <div class="form-group">
+                <label for="service">Service Needed</label>
+                <select name="service" id="service" required>
+                  <option value="Full Package (Video Editing + Photoshop Thumbnails)">Full Package (Video Editing + Photoshop Thumbnails)</option>
+                  <option value="Video Editing Only (Longform / Shorts)">Video Editing Only (Longform / Shorts)</option>
+                  <option value="Photoshop Thumbnails Only">Photoshop Thumbnails Only</option>
+                  <option value="Monthly Retainer / Ongoing Work">Monthly Retainer / Ongoing Work</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Project Details & Link to Channel</label>
+                <textarea name="message" id="message" rows="4" required placeholder="Tell me about your channel, video length, turnaround requirements..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary submit-btn">
+                Send Project Inquiry
+              </button>
+              <div id="formStatus" class="form-status"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 Hemant. All rights reserved. Crafted for video editors & visual creators.</p>
+      <a href="#showreel" class="back-to-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Modal Video Player -->
+  <div id="videoModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" onclick="closeVideoModal()"></div>
+    <div class="modal-content video-modal-content">
+      <button class="modal-close" onclick="closeVideoModal()" aria-label="Close modal">&times;</button>
+      <div class="video-container">
+        <iframe id="videoIframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Image Lightbox for Thumbnails -->
+  <div id="imageLightbox" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" onclick="closeLightbox()"></div>
+    <div class="modal-content lightbox-modal-content">
+      <button class="modal-close" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
+      <div class="lightbox-img-wrapper">
+        <img id="lightboxImg" src="" alt="Full resolution thumbnail preview">
+      </div>
+      <div class="lightbox-caption">
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxSubtitle"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Supabase JS Client (Ready to use if you connect Supabase) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>
