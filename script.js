@@ -137,7 +137,7 @@ function initKeyboardListeners() {
   });
 }
 
-// Contact Form Handler (Supports Web3Forms Email, Supabase, or Local Feedback)
+// Contact Form Handler (Supports Cloudflare Edge, Vercel Serverless, Web3Forms Email)
 async function handleFormSubmit(e) {
   e.preventDefault();
   const form = document.getElementById('contactForm');
@@ -148,77 +148,42 @@ async function handleFormSubmit(e) {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending inquiry...';
 
-  // 1. Web3Forms Email Delivery (Active when key is set in index.html)
-  const accessKeyInput = document.getElementById('web3formsKey');
-  const accessKey = accessKeyInput ? accessKeyInput.value : '';
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const service = document.getElementById('service').value;
+  const message = document.getElementById('message').value;
 
-  if (accessKey && accessKey !== 'YOUR_ACCESS_KEY_HERE') {
-    try {
+  try {
+    // 1. Submit to Cloudflare Pages & Vercel native edge API (/api/inquiry)
+    fetch('/api/inquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, service, message })
+    }).catch(() => {});
+
+    // 2. Web3Forms Email Delivery
+    const accessKeyInput = document.getElementById('web3formsKey');
+    const accessKey = accessKeyInput ? accessKeyInput.value : '';
+
+    if (accessKey && accessKey !== 'YOUR_ACCESS_KEY_HERE') {
       const formData = new FormData(form);
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: formData
       });
       const result = await res.json();
-
-      if (result.success) {
-        status.className = 'form-status success';
-        status.textContent = '✓ Thank you! Your inquiry was emailed to me. I will get back to you within 24 hours.';
-        form.reset();
-      } else {
-        throw new Error(result.message || 'Submission error');
-      }
-    } catch (err) {
-      status.className = 'form-status';
-      status.style.color = '#ef4444';
-      status.textContent = 'Notice: ' + err.message;
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Project Inquiry';
+      if (!result.success) throw new Error(result.message || 'Submission error');
     }
-    return;
-  }
 
-  // 2. Optional Supabase Integration:
-  const SUPABASE_CONFIG = {
-    url: '', // e.g. 'https://xyzcompany.supabase.co'
-    anonKey: '' // e.g. 'eyJhbGciOi...'
-  };
-
-  if (SUPABASE_CONFIG.url && SUPABASE_CONFIG.anonKey && window.supabase) {
-    try {
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const service = document.getElementById('service').value;
-      const message = document.getElementById('message').value;
-
-      const client = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
-      const { data, error } = await client
-        .from('inquiries')
-        .insert([{ name, email, service, message }]);
-
-      if (error) throw error;
-
-      status.className = 'form-status success';
-      status.textContent = '✓ Thank you! Your inquiry was saved to Supabase. I will get back to you within 24 hours.';
-      form.reset();
-    } catch (err) {
-      console.error('Supabase error:', err);
-      status.className = 'form-status';
-      status.style.color = '#ef4444';
-      status.textContent = 'Notice: Could not reach Supabase (' + err.message + '). Check project credentials.';
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Project Inquiry';
-    }
-  } else {
-    // 3. Default demo feedback when no key is set yet
-    setTimeout(() => {
-      status.className = 'form-status success';
-      status.textContent = '✓ Thank you! Your message has been sent. I will get back to you within 24 hours.';
-      form.reset();
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Project Inquiry';
-    }, 800);
+    status.className = 'form-status success';
+    status.textContent = '✓ Thank you! Your inquiry has been sent. I will get back to you within 24 hours.';
+    form.reset();
+  } catch (err) {
+    status.className = 'form-status';
+    status.style.color = '#ef4444';
+    status.textContent = 'Notice: ' + err.message;
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Project Inquiry';
   }
 }
